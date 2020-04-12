@@ -1,137 +1,325 @@
 <div class="mt-4 main">
-  <form [formGroup]="portfolioForm" (submit)="onSubmit(portfolioForm.value)">
+  <form [formGroup]="portfolioForm" (submit)="onSubmit()">
     <div class="row">
-      <div class="form-group col-md-6 col-sm-12">
-        <label for="slug">Slug</label>
-        <input
-          formControlName="slug"
-          id="slug"
-          type="text"
-          class="form-control"
-          placeholder="Slug*"
-        />
+      <div class="col-md-6 col-sm-12">
+        <div class="form-group">
+          <label for="slug">Slug</label>
+          <input
+            formControlName="slug"
+            id="slug"
+            type="text"
+            class="form-control"
+            placeholder="Slug*"
+            [ngClass]="{
+              'is-invalid': formVal.slug.invalid && formVal.slug.touched
+            }"
+          />
+          <span *ngIf="formVal.slug.invalid && formVal.slug.touched">
+            <span *ngIf="formVal.slug.errors.required" class="text-danger"
+              >*slug value is required..</span
+            >
+          </span>
+        </div>
       </div>
-      <div class="form-group col-md-6 col-sm-12">
-        <label for="nick_name">Nick Name</label>
-        <input
-          formControlName="nick_name"
-          id="nick_name"
-          type="text"
-          class="form-control"
-          placeholder="Nick Name*"
-        />
+      <div class="col-md-6 col-sm-12">
+        <div class="form-group">
+          <label for="nick_name">Nick Name</label>
+          <input
+            formControlName="nick_name"
+            id="nick_name"
+            type="text"
+            class="form-control"
+            placeholder="Nick Name*"
+            [ngClass]="{
+              'is-invalid':
+                formVal.nick_name.invalid && formVal.nick_name.touched
+            }"
+          />
+          <span *ngIf="formVal.nick_name.invalid && formVal.nick_name.touched">
+            <span *ngIf="formVal.nick_name.errors.required" class="text-danger"
+              >*Nick name is required..</span
+            >
+          </span>
+        </div>
       </div>
     </div>
 
     <div class="row">
-      <div class="form-group col-md-6 col-sm-12">
-        <label for="location">Location</label>
-        <input
-          formControlName="location"
-          id="location"
-          type="text"
-          class="form-control"
-          placeholder="Location*"
-        />
+      <div class="col-md-6 col-sm-12">
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input
+            formControlName="location"
+            id="location"
+            type="text"
+            class="form-control"
+            placeholder="Location*"
+            [ngClass]="{
+              'is-invalid': formVal.location.invalid && formVal.location.touched
+            }"
+          />
+          <span
+            *ngIf="formVal.location.invalid && formVal.location.touched"
+            class="text-danger"
+          >
+            <span *ngIf="formVal.location.errors.required"
+              >*Location is required..</span
+            >
+            <span *ngIf="formVal.location.errors.minlength">
+              Location name should be greater than 3..
+            </span>
+          </span>
+        </div>
       </div>
 
-      <div class="form-group col-md-6 col-sm-12">
-        <label for="country">Country</label>
-        <input
-          formControlName="country"
-          id="country"
-          type="text"
-          class="form-control"
-          placeholder="Country*"
-        />
+      <div class="col-md-6 col-sm-12">
+        <div class="form-group">
+          <label for="country">Country</label>
+          <input
+            formControlName="country"
+            id="country"
+            type="text"
+            class="form-control"
+            placeholder="Country*"
+            [ngClass]="{
+              'is-invalid': formVal.country.invalid && formVal.country.touched
+            }"
+          />
+          <span
+            *ngIf="formVal.country.invalid && formVal.country.touched"
+            class="text-danger"
+          >
+            <span *ngIf="formVal.country.errors.required"
+              >*Country is required..</span
+            >
+            <span *ngIf="formVal.country.errors.minlength">
+              Country name should be greater than 3..
+            </span>
+          </span>
+        </div>
       </div>
     </div>
 
     <div class="row">
-      <div class="form-group col-md-6 col-sm-12">
-        <label for="fb_link">Facebook Link</label>
-        <input
-          formControlName="fb_link"
-          id="fb_link"
-          type="text"
-          class="form-control"
-          placeholder="Facebook url link*"
-        />
+      <div class="col-md-6 col-sm-12">
+        <div class="form-group">
+          <label for="fb_link">Facebook Link</label>
+          <input
+            formControlName="fb_link"
+            id="fb_link"
+            type="text"
+            class="form-control"
+            placeholder="Facebook url link*"
+            [ngClass]="{
+              'is-invalid': formVal.fb_link.invalid && formVal.fb_link.touched
+            }"
+          />
+          <span
+            *ngIf="formVal.fb_link.invalid && formVal.fb_link.touched"
+            class="text-danger"
+          >
+            <span *ngIf="formVal.fb_link.errors.required"
+              >*Facebook Link is required..</span
+            >
+            <span *ngIf="formVal.fb_link.errors.pattern">
+              Please enter valid facebook link..
+            </span>
+          </span>
+        </div>
       </div>
-      <div class="form-group col-md-6 col-sm-12">
-        <label for="instagram_link">Instagram Link</label>
-        <input
-          formControlName="instagram_link"
-          id="instagram_link"
-          type="text"
-          class="form-control"
-          placeholder="Instagram url link*"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="form-group col-md-6 col-sm-12">
-        <label for="twitter_link">Twitter Link</label>
-        <input
-          formControlName="twitter_link"
-          id="twitter_link"
-          type="text"
-          class="form-control"
-          placeholder="Twitter url link*"
-        />
-      </div>
-      <div class="form-group col-md-6 col-sm-12">
-        <label for="share_link">Share Link</label>
-        <input
-          formControlName="share_link"
-          id="share_link"
-          type="text"
-          class="form-control"
-          placeholder="Share url link*"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="form-group col-md-6 col-sm-12">
-        <label for="about">About</label>
-        <textarea
-          formControlName="about"
-          id="about"
-          rows="4"
-          class="form-control"
-          placeholder="About*"
-        ></textarea>
-      </div>
-      <div class="form-group col-md-6 col-sm-12">
-        <label for="description">Description</label>
-        <textarea
-          formControlName="description"
-          id="description"
-          rows="4"
-          class="form-control"
-          placeholder="Description*"
-        ></textarea>
+      <div class="col-md-6 col-sm-12">
+        <div class="form-group">
+          <label for="instagram_link">Instagram Link</label>
+          <input
+            formControlName="instagram_link"
+            id="instagram_link"
+            type="text"
+            class="form-control"
+            placeholder="Instagram url link*"
+            [ngClass]="{
+              'is-invalid':
+                formVal.instagram_link.invalid && formVal.instagram_link.touched
+            }"
+          />
+          <span
+            *ngIf="
+              formVal.instagram_link.invalid && formVal.instagram_link.touched
+            "
+            class="text-danger"
+          >
+            <span
+              *ngIf="formVal.instagram_link.errors.required"
+              class="text-danger"
+              >*Instagram Link is required..</span
+            >
+            <span *ngIf="formVal.instagram_link.errors.pattern">
+              Please enter valid instagram link..
+            </span>
+          </span>
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="form-group col-md-6 col-sm-12">
-        <label for="card_img">Card Image</label>
-        <input
-          formControlName="card_img"
-          id="card_img"
-          type="file"
-          class="form-control"
-        />
+      <div class="col-md-6 col-sm-12">
+        <div class="form-group">
+          <label for="twitter_link">Twitter Link</label>
+          <input
+            formControlName="twitter_link"
+            id="twitter_link"
+            type="text"
+            class="form-control"
+            placeholder="Twitter url link*"
+            [ngClass]="{
+              'is-invalid':
+                formVal.twitter_link.invalid && formVal.twitter_link.touched
+            }"
+          />
+          <span
+            *ngIf="formVal.twitter_link.invalid && formVal.twitter_link.touched"
+            class="text-danger"
+          >
+            <span *ngIf="formVal.twitter_link.errors.required"
+              >*Twitter Link is required..</span
+            >
+            <span *ngIf="formVal.twitter_link.errors.pattern">
+              Please enter valid twitter link..
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="form-group">
+          <label for="share_link">Share Link</label>
+          <input
+            formControlName="share_link"
+            id="share_link"
+            type="text"
+            class="form-control"
+            placeholder="Share url link*"
+            [ngClass]="{
+              'is-invalid':
+                formVal.share_link.invalid && formVal.share_link.touched
+            }"
+          />
+          <span
+            *ngIf="formVal.share_link.invalid && formVal.share_link.touched"
+            class="text-danger"
+          >
+            <span *ngIf="formVal.share_link.errors.required"
+              >*Share Link is required..</span
+            >
+            <span *ngIf="formVal.share_link.errors.pattern">
+              Please enter valid share link..
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="form-group">
+          <label for="about">About</label>
+          <textarea
+            formControlName="about"
+            id="about"
+            rows="4"
+            class="form-control"
+            placeholder="About*"
+            [ngClass]="{
+              'is-invalid': formVal.about.invalid && formVal.about.touched
+            }"
+          ></textarea>
+          <span
+            *ngIf="formVal.about.invalid && formVal.about.touched"
+            class="text-danger"
+          >
+            <span *ngIf="formVal.about.errors.required"
+              >*About is required..</span
+            >
+            <span *ngIf="formVal.about.errors.minlength">
+              About should be greater than 5..
+            </span>
+            <span *ngIf="formVal.about.errors.maxlength">
+              About should be less than 20..
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea
+            formControlName="description"
+            id="description"
+            rows="4"
+            class="form-control"
+            placeholder="Description*"
+            [ngClass]="{
+              'is-invalid':
+                formVal.description.invalid && formVal.description.touched
+            }"
+          ></textarea>
+          <span
+            *ngIf="formVal.description.invalid && formVal.description.touched"
+            class="text-danger"
+          >
+            <span *ngIf="formVal.description.errors.required"
+              >*Description is required..</span
+            >
+            <span *ngIf="formVal.description.errors.minlength">
+              Description should be greater than 20..
+            </span>
+            <span *ngIf="formVal.description.errors.maxlength">
+              Description should be greater than 40..
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="form-group">
+          <label for="card_img">Card Image</label>
+          <input
+            formControlName="card_img"
+            id="card_img"
+            type="file"
+            class="form-control"
+            (change)="fileProgress($event)"
+            [ngClass]="{
+              'is-invalid': formVal.card_img.invalid && formVal.card_img.touched
+            }"
+          />
+          <span *ngIf="formVal.card_img.invalid && formVal.card_img.touched">
+            <span *ngIf="formVal.card_img.errors.required" class="text-danger"
+              >*Card Image is required..</span
+            >
+          </span>
+        </div>
       </div>
 
-      <div class="form-group col-md-6 col-sm-12">
-        <label for="banner_img">Banner Image</label>
-        <input
-          formControlName="banner_img"
-          id="banner_img"
-          type="file"
-          class="form-control"
-        />
+      <div class="col-md-6 col-sm-12">
+        <div class="form-group">
+          <label for="banner_img">Banner Image</label>
+          <input
+            formControlName="banner_img"
+            id="banner_img"
+            type="file"
+            class="form-control"
+            (change)="bannerProgress($event)"
+            [ngClass]="{
+              'is-invalid':
+                formVal.banner_img.invalid && formVal.banner_img.touched
+            }"
+          />
+          <span
+            *ngIf="formVal.banner_img.invalid && formVal.banner_img.touched"
+          >
+            <span *ngIf="formVal.banner_img.errors.required" class="text-danger"
+              >*Banner Image is required..</span
+            >
+          </span>
+        </div>
       </div>
     </div>
     <div class="row">

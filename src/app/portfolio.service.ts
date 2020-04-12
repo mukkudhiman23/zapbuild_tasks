@@ -9,6 +9,7 @@ export class PortfolioService {
 
   //method for api hit with post method
   editProtfolio(data: any) {
+    console.log(data.get("about"));
     return this.http.post(this.API_URL, data);
   }
 }
